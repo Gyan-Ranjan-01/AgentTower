@@ -8,16 +8,48 @@ rates_per_million_tokens:
     "gpt-4o-mini":
       input_usd: 0.15
       output_usd: 0.60
+      tier: "Economy"
+      category: "Lightweight Monitoring"
+      description: "Low-latency monitoring, health checking, and basic triage"
+    "gemini-1.5-flash":
+      input_usd: 0.08
+      output_usd: 0.30
+      tier: "Economy"
+      category: "Lightweight Monitoring"
+      description: "Ultra-fast log parsing and anomaly telemetry ingestion"
+    "claude-3-haiku":
+      input_usd: 0.25
+      output_usd: 1.25
+      tier: "Economy"
+      category: "Lightweight Monitoring"
+      description: "High-throughput privacy scanning and PII rule checks"
+    "llama-3.1-8b":
+      input_usd: 0.10
+      output_usd: 0.20
+      tier: "Economy"
+      category: "Lightweight Monitoring"
+      description: "Local/edge tracing and span provenance tracking"
     "gpt-4o":
       input_usd: 2.50
       output_usd: 10.00
+      tier: "Premium"
+      category: "High-Capability Frontier"
+      description: "Multi-agent causal correlation, remediation planning, supervisor"
     "claude-3-5-sonnet":
       input_usd: 3.00
       output_usd: 15.00
+      tier: "Premium"
+      category: "High-Capability Frontier"
+      description: "Complex root-cause analysis and code-level remediation"
     "gemini-1.5-pro":
       input_usd: 1.25
       output_usd: 5.00
+      tier: "Premium"
+      category: "High-Capability Frontier"
+      description: "Extended multimodal contextual memory and deep trace review"
     "scripted-mock-v1":
       input_usd: 0.50
       output_usd: 1.50
-
+      tier: "Standard"
+      category: "Deterministic Test Harness"
+      description: "Scripted offline baseline model with repeatable zero-token API cost"

@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import { StatusBadge } from "@/components/StatusBadge";
 import { SeverityBadge } from "@/components/SeverityBadge";
+import { ModelPricingPopover } from "@/components/ModelPricingPopover";
+import { AdaptiveIntelligenceControl } from "@/components/AdaptiveIntelligenceControl";
 
 export default function OverviewPage() {
   const [agents, setAgents] = useState<any[]>([]);
@@ -174,18 +176,17 @@ export default function OverviewPage() {
         </div>
 
         {/* KPI 4: Spend Attribution */}
-        <div className="clay-card p-5 relative overflow-hidden">
+        <div className="clay-card p-5 relative z-20">
           <div className="flex items-center justify-between text-slate-500 mb-3">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Attributed Spend</span>
-            <div className="w-9 h-9 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center clay-inset">
-              <DollarSign className="w-4 h-4" />
-            </div>
+            <ModelPricingPopover />
           </div>
           <div className="text-4xl font-black text-emerald-600 tracking-tight">
             ${(cost?.total_cost_usd || 0.0).toFixed(4)}
           </div>
-          <div className="mt-4 text-xs font-medium text-slate-500">
-            Real pricing via <span className="font-mono text-[11px] font-semibold text-slate-600">prices.yaml</span>
+          <div className="mt-4 text-xs font-medium text-slate-500 flex items-center justify-between">
+            <span>Real rates via <span className="font-mono text-[11px] font-semibold text-slate-600">prices.yaml</span></span>
+            <span className="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">Hover $ for rates</span>
           </div>
         </div>
       </div>
@@ -343,6 +344,11 @@ export default function OverviewPage() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Adaptive Intelligence & Dynamic Cost Control Section */}
+      <div className="pt-4">
+        <AdaptiveIntelligenceControl />
       </div>
     </div>
   );

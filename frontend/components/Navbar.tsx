@@ -14,6 +14,7 @@ import {
   Activity,
   Layers,
   RotateCcw,
+  Cpu,
 } from "lucide-react";
 
 export function Navbar() {
@@ -52,6 +53,7 @@ export function Navbar() {
 
   const navItems = [
     { href: "/", label: "Overview", icon: Layers },
+    { href: "/adaptive", label: "Adaptive AI & Cost", icon: Cpu },
     { href: "/lineage", label: "Lineage DAG", icon: GitBranch },
     { href: "/incidents", label: "Incidents", icon: ShieldAlert },
     { href: "/approvals", label: "Decision Gate", icon: CheckCircle },

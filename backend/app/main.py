@@ -566,3 +566,49 @@ async def demo_inject(payload: Dict[str, Any]):
     from scripts.inject import run_scenario
     result = await asyncio.to_thread(run_scenario, scenario_id)
     return result
+
+
+# Adaptive Intelligence & Cost Control Endpoints
+from backend.adaptive.service import adaptive_service
+
+
+@app.get("/api/models/pricing")
+async def get_models_pricing():
+    """Returns the pricing directory of available models, their rates, tiers, and running status."""
+    return adaptive_service.get_pricing_catalog()
+
+
+@app.get("/api/adaptive-intelligence")
+async def get_adaptive_intelligence_state():
+    """Returns the state of Manager Agent, Monitoring Bots, 3-Stage Pipeline, and Activity Logs."""
+    return adaptive_service.get_adaptive_state()
+
+
+@app.post("/api/adaptive-intelligence/bot-mode")
+async def set_bot_operating_mode(payload: Dict[str, Any]):
+    bot_id = payload.get("bot_id")
+    mode = payload.get("mode")
+    if not bot_id or not mode:
+        raise HTTPException(status_code=400, detail="Missing 'bot_id' or 'mode'")
+    try:
+        updated = adaptive_service.set_bot_operating_mode(bot_id, mode)
+        await sse_manager.broadcast("adaptive_updated", {"bot_id": bot_id, "mode": mode})
+        return updated
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+
+@app.post("/api/adaptive-intelligence/temporary-upgrade")
+async def set_temporary_upgrade(payload: Dict[str, Any]):
+    bot_id = payload.get("bot_id")
+    duration_minutes = int(payload.get("duration_minutes", 30))
+    model = payload.get("model", "gpt-4o")
+    if not bot_id:
+        raise HTTPException(status_code=400, detail="Missing 'bot_id'")
+    try:
+        updated = adaptive_service.set_temporary_premium_upgrade(bot_id, duration_minutes, model)
+        await sse_manager.broadcast("adaptive_updated", {"bot_id": bot_id, "temporary_premium": True})
+        return updated
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+

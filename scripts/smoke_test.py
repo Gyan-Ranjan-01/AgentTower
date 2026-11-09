@@ -71,6 +71,7 @@ def run_smoke_test():
             ("http://localhost:3000/cost", "06_cost.png", "Cost Attribution Engine"),
             ("http://localhost:3000/replay", "07_replay.png", "Deterministic Audit & Replay"),
             ("http://localhost:3000/demo", "08_demo_controls.png", "Demo Controls & Fault Injection"),
+            ("http://localhost:3000/adaptive", "09_adaptive_intelligence.png", "Adaptive Intelligence & Cost Control"),
         ]
 
         print("\n[4/4] Launching Playwright Chromium headless browser...")
