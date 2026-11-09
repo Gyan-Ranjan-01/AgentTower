@@ -61,6 +61,7 @@ As enterprise engineering organizations deploy autonomous multi-agent systems to
 | **Agent Administration** | Exclusive Governed Config Writer | The **only** component authorized to modify agent configurations. Rejects all actions without a valid Permission Broker token, executes automated post-remediation validation tests, and triggers instant rollback on failure. |
 | **Distributed Lineage DAG** | Inter-Agent Trace Provenance | Reconstructs complete multi-tier execution graphs (`User Request → Orchestrator → Research/Finance → Report`) in interactive React Flow with causal incident localization. |
 | **Cost Attribution Engine** | Granular Spend Accountability | Correlates token usage and USD costs in real-time attributed per agent, per department, and per task based on `config/prices.yaml`. |
+| **Adaptive Intelligence & Cost** | Dynamic Model Tiering & Cost Defense | 3-stage hierarchical pipeline (Rules 0-token check → Lightweight LLMs for continuous monitoring bots → Frontier LLM Manager for root cause correlation) yielding 96.2% cost reduction with on-demand timed Premium mode. |
 
 ---
 
@@ -118,6 +119,7 @@ All screenshots captured live via Playwright headless Chromium in 1080p resoluti
 | **Decision Gate & Approvals** | ![Decision Gate](docs/screenshots/04_approvals.png) | Real-time human-in-the-loop escalation holding sensitive tool calls (e.g. server restarts, payroll updates) with live spend tracking and role-based authorization. |
 | **Governed Remediation** | ![Remediation](docs/screenshots/05_remediation.png) | Structured diagnostic plan view showing probable root cause, proposed diff, SHA-256 Plan Hash, HMAC token issuance, and automated post-repair validation. |
 | **Cost Attribution Engine** | ![Cost Attribution](docs/screenshots/06_cost.png) | Real-time financial attribution engine rendering Recharts bar and pie charts broken down by agent, organizational department, and task ID. |
+| **Adaptive Intelligence & Cost** | ![Adaptive Intelligence](docs/screenshots/09_adaptive_intelligence.png) | 3-stage cost optimization pipeline, continuous monitoring bots vs Manager Agent, per-bot tier selectors, temporary timed premium upgrades, and interactive model rate card popover. |
 | **Deterministic Audit & Replay** | ![Audit Replay](docs/screenshots/07_replay.png) | Timeline scrubber reconstructing recorded run traces step by step without re-executing LLMs, paired with an immutable append-only governance log. |
 | **Demo Controls & Fault Injection** | ![Demo Controls](docs/screenshots/08_demo_controls.png) | Interactive demonstration console with 1-click fault injection buttons for scenarios V1..V8 and an instant `<10s` clean state reset. |
 

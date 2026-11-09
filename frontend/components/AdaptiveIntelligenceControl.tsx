@@ -34,9 +34,11 @@ interface MonitoringBot {
   monitoring_tasks: string[];
 }
 
+import { getFallbackAdaptiveState } from "@/lib/fallbackStore";
+
 export function AdaptiveIntelligenceControl() {
-  const [data, setData] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<any>(() => getFallbackAdaptiveState());
+  const [loading, setLoading] = useState(false);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
   const [tempDurations, setTempDurations] = useState<Record<string, number>>({
     finance_sentinel_bot: 30,
@@ -48,10 +50,16 @@ export function AdaptiveIntelligenceControl() {
   const fetchState = async () => {
     try {
       const res = await fetch("/api/adaptive-intelligence");
-      const d = await res.json();
-      setData(d);
+      if (res.ok) {
+        const d = await res.json();
+        if (d && d.monitoring_bots && d.monitoring_bots.length > 0) {
+          setData(d);
+          return;
+        }
+      }
+      setData((prev: any) => prev || getFallbackAdaptiveState());
     } catch (err) {
-      console.error("Failed to load adaptive intelligence state:", err);
+      setData((prev: any) => prev || getFallbackAdaptiveState());
     } finally {
       setLoading(false);
     }

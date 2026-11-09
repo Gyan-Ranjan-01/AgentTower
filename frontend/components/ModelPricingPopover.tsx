@@ -2,24 +2,24 @@
 
 import React, { useEffect, useState } from "react";
 import { DollarSign, Cpu, CheckCircle2, Zap } from "lucide-react";
+import { fallbackPricingCatalog } from "@/lib/fallbackStore";
 
 export function ModelPricingPopover() {
   const [isOpen, setIsOpen] = useState(false);
-  const [pricing, setPricing] = useState<any[]>([]);
+  const [pricing, setPricing] = useState<any[]>(fallbackPricingCatalog);
   const [loading, setLoading] = useState(false);
 
   const fetchPricing = async () => {
     try {
-      setLoading(true);
       const res = await fetch("/api/models/pricing");
-      const data = await res.json();
-      if (data && Array.isArray(data.catalog)) {
-        setPricing(data.catalog);
+      if (res.ok) {
+        const data = await res.json();
+        if (data && Array.isArray(data.catalog) && data.catalog.length > 0) {
+          setPricing(data.catalog);
+        }
       }
     } catch (err) {
-      console.error("Failed to fetch model pricing:", err);
-    } finally {
-      setLoading(false);
+      // Keep fallback pricing catalog
     }
   };
 

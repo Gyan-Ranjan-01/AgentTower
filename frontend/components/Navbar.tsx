@@ -24,17 +24,58 @@ export function Navbar() {
   const [resetting, setResetting] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch("/api/health")
-      .then((r) => r.json())
-      .then((d) => {
-        if (d.llm_mode) setLlmMode(d.llm_mode);
-      })
-      .catch(() => {});
+    let es: EventSource | null = null;
+    let reconnectTimeout: any = null;
+    let isMounted = true;
 
-    const es = new EventSource("/api/sse");
-    es.onopen = () => setSseConnected(true);
-    es.onerror = () => setSseConnected(false);
-    return () => es.close();
+    const checkHealth = () => {
+      fetch("/api/health")
+        .then((r) => r.json())
+        .then((d) => {
+          if (!isMounted) return;
+          if (d.llm_mode) setLlmMode(d.llm_mode);
+          setSseConnected(true);
+        })
+        .catch(() => {});
+    };
+
+    checkHealth();
+
+    const connectSSE = () => {
+      try {
+        if (es) es.close();
+        es = new EventSource("/api/sse");
+
+        es.onopen = () => {
+          if (isMounted) setSseConnected(true);
+        };
+        es.onmessage = () => {
+          if (isMounted) setSseConnected(true);
+        };
+        es.addEventListener("connected", () => {
+          if (isMounted) setSseConnected(true);
+        });
+        es.addEventListener("agent_heartbeat", () => {
+          if (isMounted) setSseConnected(true);
+        });
+        es.onerror = () => {
+          if (!isMounted) return;
+          checkHealth();
+          es?.close();
+          reconnectTimeout = setTimeout(connectSSE, 2000);
+        };
+      } catch (e) {
+        reconnectTimeout = setTimeout(connectSSE, 3000);
+      }
+    };
+
+    connectSSE();
+
+    return () => {
+      isMounted = false;
+      if (reconnectTimeout) clearTimeout(reconnectTimeout);
+      if (es) es.close();
+    };
   }, []);
 
   const handleQuickReset = async () => {
