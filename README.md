@@ -9,11 +9,16 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![Next.js](https://img.shields.io/badge/Next.js-14.2%20App%20Router-black?logo=next.js&logoColor=white)](https://nextjs.org)
-[![React Flow](https://img.shields.io/badge/React%20Flow-Lineage%20DAG-FF0072?logo=react&logoColor=white)](https://reactflow.dev)
-[![SQLite WAL](https://img.shields.io/badge/SQLite-WAL%20Mode-003B57?logo=sqlite&logoColor=white)](https://sqlite.org)
-[![Pytest](https://img.shields.io/badge/Pytest-13%2F13%20Passed-0A9EDC?logo=pytest&logoColor=white)](https://pytest.org)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-agenttower.vercel.app-000000?logo=vercel&logoColor=white)](https://agenttower.vercel.app)
+[![GitHub](https://img.shields.io/badge/GitHub-AgentTower-181717?logo=github&logoColor=white)](https://github.com/Gyan-Ranjan-01/AgentTower)
+[![Pytest](https://img.shields.io/badge/Pytest-17%2F17%20Passed-0A9EDC?logo=pytest&logoColor=white)](https://pytest.org)
 [![Evaluation](https://img.shields.io/badge/Harness%20V1..V8-100%25%20Verified-brightgreen)](#-empirical-evaluation-results)
 [![Demo Reset](https://img.shields.io/badge/Demo%20State%20Reset-%3C10s%20(9.9s)-blueviolet)](#-fast-state-reset-in-under-10-seconds)
+
+---
+
+**🌐 Live Production Console:** [https://agenttower.vercel.app](https://agenttower.vercel.app)  
+**📂 GitHub Repository:** [https://github.com/Gyan-Ranjan-01/AgentTower](https://github.com/Gyan-Ranjan-01/AgentTower)
 
 ---
 
