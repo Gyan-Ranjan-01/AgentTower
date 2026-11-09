@@ -158,3 +158,4 @@ def test_prompt_injection_heuristic():
     assert incident["severity"] == "Medium"
     assert 0.60 <= incident["confidence"] <= 1.0
     assert incident["rule_id"] == "RULE_PROMPT_INJECTION"
+

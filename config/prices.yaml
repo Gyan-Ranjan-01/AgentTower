@@ -20,3 +20,4 @@ rates_per_million_tokens:
     "scripted-mock-v1":
       input_usd: 0.50
       output_usd: 1.50
+

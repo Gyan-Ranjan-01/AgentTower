@@ -19,3 +19,4 @@ decision_gate:
   default_timeout_action: "reject"
   max_spend_limit_per_run_usd: 1.50
   max_tool_retries_per_run: 3
+

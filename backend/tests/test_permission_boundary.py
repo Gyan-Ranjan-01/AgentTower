@@ -38,3 +38,4 @@ def test_aegis_package_strict_read_only_boundary():
                         or ("write" in fn_name and "agent" in fn_name)
                         or ("delete" in fn_name and "agent" in fn_name)
                     ), f"ReadOnlyStore exposes write method: {node.name}"
+

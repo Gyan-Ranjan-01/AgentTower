@@ -129,3 +129,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
     res = run_scenario(args.scenario)
     print(f"\nResult: {res}")
+

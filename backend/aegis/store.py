@@ -106,3 +106,4 @@ class ReadOnlyStore:
             )
             rows = await cursor.fetchall()
             return [r["k"] for r in rows]
+

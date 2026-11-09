@@ -38,3 +38,4 @@ rules:
       - "(?i)you\\s+are\\s+now\\s+(an?\\s+)?unrestricted"
       - "(?i)disregard\\s+all\\s+safety\\s+protocols"
       - "(?i)output\\s+confidential\\s+(api\\s+key|credentials|passwords)"
+

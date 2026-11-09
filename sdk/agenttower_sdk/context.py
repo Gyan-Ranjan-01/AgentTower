@@ -84,3 +84,4 @@ def span_context(span_id: Optional[str] = None) -> Generator[str, None, None]:
     finally:
         _current_parent_span_id.reset(token_p)
         _current_span_id.reset(token_s)
+

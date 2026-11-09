@@ -256,3 +256,4 @@ class AgentTowerLangChainCallbackHandler(BaseCallbackHandler):
                 "retrieved_text": " ".join(retrieved_snippets)
             }
         )
+

@@ -14,3 +14,4 @@ class AgentTowerCrewAIAdapter:
 
     def wrap_tool(self, tool_name: str, fn: Callable) -> Callable:
         return instrument_tool(tool_name=tool_name, agent_id=self.agent_id, framework="crewai")(fn)
+

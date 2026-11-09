@@ -64,3 +64,4 @@
    - *Show Audit Log Table:* "Every human approval, token hash, configuration mutation, and validation result is written to an immutable append-only audit trail."
    - *Click `Reset State` in the top navbar.*
    - *Point to stopwatch:* "And if you want to test again, our reset restores the clean baseline in under 10 seconds. Thank you."
+

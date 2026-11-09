@@ -45,3 +45,4 @@ export function SeverityBadge({ severity, confidence }: SeverityBadgeProps) {
     </span>
   );
 }
+

@@ -131,3 +131,4 @@ class HRAgent:
                 "summary": llm_text,
                 "gated_res": gated_res
             }
+

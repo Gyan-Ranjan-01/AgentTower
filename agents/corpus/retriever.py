@@ -62,3 +62,4 @@ class LocalRetriever:
 
 
 local_retriever = LocalRetriever()
+

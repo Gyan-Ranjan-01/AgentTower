@@ -125,3 +125,4 @@ class CostAttributionSchema(BaseModel):
     by_task: Dict[str, Dict[str, Any]]
     total_cost_usd: float
     total_tokens: int
+

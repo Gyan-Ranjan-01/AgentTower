@@ -68,3 +68,4 @@ async def process_incoming_events(raw_events: List[Dict[str, Any]]) -> int:
         await sse_manager.broadcast("event_ingested", ev)
 
     return stored_count
+

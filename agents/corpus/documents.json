@@ -120,3 +120,4 @@
     "content": "SSH access to production bastion servers requires hardware MFA and temporary session certificates signed by the internal certificate authority. Direct SSH to worker nodes is disabled."
   }
 ]
+

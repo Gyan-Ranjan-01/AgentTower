@@ -149,3 +149,4 @@ def test_operation_outside_allowlist_refused():
             )
         assert "outside the token permitted allow-list" in str(exc_info.value).lower()
     asyncio.run(run())
+
