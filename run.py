@@ -69,8 +69,10 @@ def cmd_start():
         cmd_seed()
 
     # 2. Launch Backend via uvicorn
+    backend_port = os.getenv("AGENTTOWER_PORT", "8001")
+    frontend_port = os.getenv("FRONTEND_PORT", "3000")
     backend_proc = subprocess.Popen(
-        [sys.executable, "-m", "uvicorn", "backend.app.main:app", "--host", "127.0.0.1", "--port", "8000", "--reload"],
+        [sys.executable, "-m", "uvicorn", "backend.app.main:app", "--host", "127.0.0.1", "--port", backend_port, "--reload"],
         cwd=str(ROOT_DIR)
     )
 
@@ -78,16 +80,16 @@ def cmd_start():
     frontend_proc = None
     if FRONTEND_DIR.exists() and (FRONTEND_DIR / "package.json").exists():
         frontend_proc = subprocess.Popen(
-            ["node", "node_modules/next/dist/bin/next", "dev", "-p", "3000"],
+            ["node", "node_modules/next/dist/bin/next", "dev", "-p", frontend_port],
             cwd=str(FRONTEND_DIR)
         )
 
     print("\n" + "=" * 60)
     print("AgentTower Prototype Running:")
-    print("  - Backend API & SSE: http://127.0.0.1:8000")
-    print("  - API Documentation: http://127.0.0.1:8000/docs")
+    print(f"  - Backend API & SSE: http://127.0.0.1:{backend_port}")
+    print(f"  - API Documentation: http://127.0.0.1:{backend_port}/docs")
     if frontend_proc:
-        print("  - Frontend Console:  http://localhost:3000")
+        print(f"  - Frontend Console:  http://localhost:{frontend_port}")
     print("Press Ctrl+C to terminate services gracefully.")
     print("=" * 60 + "\n")
 

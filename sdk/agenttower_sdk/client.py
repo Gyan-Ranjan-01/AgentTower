@@ -24,8 +24,9 @@ from sdk.agenttower_sdk.context import (
 )
 
 logger = logging.getLogger("agenttower_sdk")
-DEFAULT_INGEST_URL = os.getenv("AGENTTOWER_API_URL", "http://127.0.0.1:8000/api/events")
-DEFAULT_GATE_URL = os.getenv("AGENTTOWER_GATE_URL", "http://127.0.0.1:8000/api/gate/requests")
+DEFAULT_PORT = os.getenv("AGENTTOWER_PORT", "8001")
+DEFAULT_INGEST_URL = os.getenv("AGENTTOWER_API_URL", f"http://127.0.0.1:{DEFAULT_PORT}/api/events")
+DEFAULT_GATE_URL = os.getenv("AGENTTOWER_GATE_URL", f"http://127.0.0.1:{DEFAULT_PORT}/api/gate/requests")
 
 
 class AgentTowerClient:

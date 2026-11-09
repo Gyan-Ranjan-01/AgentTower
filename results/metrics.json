@@ -3,7 +3,7 @@
     "scenario": "Agent stops sending heartbeats",
     "detected": true,
     "severity": "Critical",
-    "time_to_detect_ms": 72.53,
+    "time_to_detect_ms": 67.9,
     "details": "Agent marked unavailable and Critical incident raised on missed interval."
   },
   "V2": {
@@ -11,28 +11,28 @@
     "detected": true,
     "severity": "Medium",
     "evidence_events_count": 3,
-    "time_to_detect_ms": 746.18
+    "time_to_detect_ms": 1798.44
   },
   "V3": {
     "scenario": "Run exceeds token budget",
     "detected": true,
     "severity": "Medium",
     "clean_baseline_false_alarms": 0,
-    "time_to_detect_ms": 765.25
+    "time_to_detect_ms": 1748.43
   },
   "V4": {
     "scenario": "Finance agent retrieves HR docs",
     "detected": true,
     "severity": "Critical",
     "false_positives_on_normal": 0,
-    "time_to_detect_ms": 734.49
+    "time_to_detect_ms": 1718.73
   },
   "V5": {
     "scenario": "Prompt-injection text in retrieved doc",
     "detected": true,
     "confidence_score": 0.9,
     "severity": "Medium",
-    "time_to_detect_ms": 710.3
+    "time_to_detect_ms": 1737.13
   },
   "V6": {
     "scenario": "Gated action requested",

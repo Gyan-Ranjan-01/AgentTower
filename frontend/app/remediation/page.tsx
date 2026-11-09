@@ -6,12 +6,9 @@ import {
   Wrench,
   ShieldCheck,
   CheckCircle2,
-  XCircle,
   KeyRound,
   FileCheck,
-  AlertTriangle,
   ArrowRight,
-  RotateCcw,
 } from "lucide-react";
 import { StatusBadge } from "@/components/StatusBadge";
 
@@ -78,68 +75,68 @@ function RemediationContent() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 max-w-7xl mx-auto">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-extrabold text-white tracking-tight flex items-center space-x-3">
-            <Wrench className="w-8 h-8 text-blue-400" />
+          <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight flex items-center space-x-3">
+            <Wrench className="w-8 h-8 text-blue-600" />
             <span>Governed Remediation Pipeline</span>
           </h1>
-          <p className="text-slate-400 text-sm mt-1">
+          <p className="text-slate-500 text-sm mt-1 font-medium">
             Read-only diagnostic planner → Human Approval → Cryptographic HMAC Token → Agent Administration (exclusive writer)
           </p>
         </div>
 
         {plan && (
-          <div className="flex items-center space-x-2 bg-surface px-3 py-1.5 rounded-lg border border-surface-border text-xs font-mono">
-            <span className="text-slate-400">Plan Status:</span>
+          <div className="flex items-center space-x-2 clay-card px-3 py-1.5 rounded-2xl text-xs font-mono">
+            <span className="text-slate-500 font-semibold">Plan Status:</span>
             <StatusBadge status={plan.status} size="sm" />
           </div>
         )}
       </div>
 
       {/* Governed Architecture Flow Diagram Strip */}
-      <div className="bg-[#0b1220] p-4 rounded-xl border border-surface-border flex flex-wrap items-center justify-between gap-3 text-xs text-slate-300">
+      <div className="clay-card p-4 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-700 font-semibold">
         <div className="flex items-center space-x-2">
-          <div className="w-6 h-6 rounded-full bg-blue-900/60 text-blue-400 font-bold flex items-center justify-center border border-blue-700">1</div>
-          <span className="font-semibold text-white">Remediation Manager</span>
-          <span className="text-slate-500">(Read-Only Plan)</span>
+          <div className="w-6 h-6 rounded-full bg-blue-50 text-blue-700 font-bold flex items-center justify-center border border-blue-200 clay-inset">1</div>
+          <span className="font-bold text-slate-800">Remediation Manager</span>
+          <span className="text-slate-400 font-medium">(Read-Only Plan)</span>
         </div>
-        <ArrowRight className="w-4 h-4 text-slate-600 hidden md:block" />
+        <ArrowRight className="w-4 h-4 text-slate-400 hidden md:block" />
         <div className="flex items-center space-x-2">
-          <div className="w-6 h-6 rounded-full bg-amber-900/60 text-amber-400 font-bold flex items-center justify-center border border-amber-700">2</div>
-          <span className="font-semibold text-white">Human Approval</span>
-          <span className="text-slate-500">(Operator Authorization)</span>
+          <div className="w-6 h-6 rounded-full bg-amber-50 text-amber-700 font-bold flex items-center justify-center border border-amber-200 clay-inset">2</div>
+          <span className="font-bold text-slate-800">Human Approval</span>
+          <span className="text-slate-400 font-medium">(Operator Authorization)</span>
         </div>
-        <ArrowRight className="w-4 h-4 text-slate-600 hidden md:block" />
+        <ArrowRight className="w-4 h-4 text-slate-400 hidden md:block" />
         <div className="flex items-center space-x-2">
-          <div className="w-6 h-6 rounded-full bg-indigo-900/60 text-indigo-400 font-bold flex items-center justify-center border border-indigo-700">3</div>
-          <span className="font-semibold text-white">Permission Broker</span>
-          <span className="text-slate-500">(HMAC Token + Plan Hash)</span>
+          <div className="w-6 h-6 rounded-full bg-indigo-50 text-indigo-700 font-bold flex items-center justify-center border border-indigo-200 clay-inset">3</div>
+          <span className="font-bold text-slate-800">Permission Broker</span>
+          <span className="text-slate-400 font-medium">(HMAC Token + Plan Hash)</span>
         </div>
-        <ArrowRight className="w-4 h-4 text-slate-600 hidden md:block" />
+        <ArrowRight className="w-4 h-4 text-slate-400 hidden md:block" />
         <div className="flex items-center space-x-2">
-          <div className="w-6 h-6 rounded-full bg-emerald-900/60 text-emerald-400 font-bold flex items-center justify-center border border-emerald-700">4</div>
-          <span className="font-semibold text-white">Agent Administration</span>
-          <span className="text-slate-500">(Sole Writer + Validation + Rollback)</span>
+          <div className="w-6 h-6 rounded-full bg-emerald-50 text-emerald-700 font-bold flex items-center justify-center border border-emerald-200 clay-inset">4</div>
+          <span className="font-bold text-slate-800">Agent Administration</span>
+          <span className="text-slate-400 font-medium">(Sole Writer + Validation)</span>
         </div>
       </div>
 
       {plan ? (
         <div className="space-y-6">
           {/* Main Plan Card */}
-          <div className="bg-surface rounded-xl border border-surface-border p-6 shadow-xl space-y-6">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-surface-border pb-4">
+          <div className="clay-card p-6 space-y-6">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-200/70 pb-4">
               <div>
-                <span className="text-xs font-mono px-2 py-0.5 rounded bg-blue-950 text-blue-300 border border-blue-800">
+                <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-xl bg-blue-50 text-blue-700 border border-blue-200 shadow-xs">
                   Plan ID: {plan.plan_id}
                 </span>
-                <h2 className="text-xl font-bold text-white mt-2">{plan.summary}</h2>
+                <h2 className="text-xl font-black text-slate-800 mt-2">{plan.summary}</h2>
               </div>
-              <div className="text-xs font-mono text-slate-400 space-y-1 md:text-right">
-                <div>Target Agent: <strong className="text-blue-400">{plan.agent_id}</strong></div>
-                <div className="text-[11px] text-slate-500">Plan Hash: {plan.plan_hash?.substring(0, 16)}...</div>
+              <div className="text-xs font-mono text-slate-500 space-y-1 md:text-right">
+                <div>Target Agent: <strong className="text-blue-600 font-bold">{plan.agent_id}</strong></div>
+                <div className="text-[11px] text-slate-400">Plan Hash: {plan.plan_hash?.substring(0, 16)}...</div>
               </div>
             </div>
 
@@ -147,19 +144,19 @@ function RemediationContent() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">
                     Probable Root Cause
                   </h3>
-                  <p className="text-sm text-slate-200 bg-surface-card p-3 rounded-lg border border-surface-border">
+                  <p className="text-sm text-slate-700 clay-inset p-3.5 rounded-2xl bg-slate-50/80 font-medium leading-relaxed">
                     {plan.probable_root_cause}
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">
                     Step-by-Step Procedure
                   </h3>
-                  <ul className="text-xs text-slate-300 bg-surface-card p-3 rounded-lg border border-surface-border space-y-1.5 list-disc list-inside font-mono">
+                  <ul className="text-xs text-slate-700 clay-inset p-3.5 rounded-2xl bg-slate-50/80 space-y-1.5 list-disc list-inside font-mono">
                     {plan.step_by_step_procedure?.map((step: string, idx: number) => (
                       <li key={idx}>{step}</li>
                     ))}
@@ -169,22 +166,22 @@ function RemediationContent() {
 
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">
                     Proposed Configuration Mutation
                   </h3>
-                  <pre className="text-xs font-mono text-emerald-400 bg-[#080e1c] p-3 rounded-lg border border-surface-border overflow-x-auto">
+                  <pre className="text-xs font-mono text-slate-800 clay-inset p-3.5 rounded-2xl bg-slate-50 overflow-x-auto">
                     {JSON.stringify(plan.config_changes || {}, null, 2)}
                   </pre>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 text-xs">
-                  <div className="p-3 bg-surface-card rounded-lg border border-surface-border">
-                    <span className="text-slate-400 block">Expected Downtime</span>
-                    <span className="text-white font-semibold mt-1 block">{plan.expected_downtime}</span>
+                  <div className="clay-inset p-3.5 rounded-2xl bg-slate-50">
+                    <span className="text-slate-500 font-bold block">Expected Downtime</span>
+                    <span className="text-slate-800 font-bold mt-1 block">{plan.expected_downtime}</span>
                   </div>
-                  <div className="p-3 bg-surface-card rounded-lg border border-surface-border">
-                    <span className="text-slate-400 block">Required Scopes</span>
-                    <span className="text-indigo-400 font-mono mt-1 block">
+                  <div className="clay-inset p-3.5 rounded-2xl bg-slate-50">
+                    <span className="text-slate-500 font-bold block">Required Scopes</span>
+                    <span className="text-indigo-600 font-bold font-mono mt-1 block">
                       {plan.required_permissions?.join(", ") || "config:write"}
                     </span>
                   </div>
@@ -193,19 +190,19 @@ function RemediationContent() {
             </div>
 
             {/* Automated Validation Test Specifications */}
-            <div className="p-4 bg-[#080d1a] rounded-lg border border-surface-border">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center space-x-2 mb-2">
-                <FileCheck className="w-4 h-4 text-emerald-400" />
+            <div className="clay-inset p-4 rounded-2xl bg-slate-50/90">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center space-x-2 mb-2">
+                <FileCheck className="w-4 h-4 text-emerald-600" />
                 <span>Automated Post-Remediation Verification Tests</span>
               </h3>
-              <p className="text-xs text-slate-400 mb-3">
+              <p className="text-xs text-slate-500 font-medium mb-3">
                 Agent Administration automatically runs these tests immediately after applying configuration. If any test fails, an automated rollback triggers instantly.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
                 {plan.validation_tests?.map((vt: any, i: number) => (
-                  <div key={i} className="p-2.5 rounded bg-surface border border-surface-border flex items-center justify-between">
-                    <span className="text-slate-300">Test: {vt.type || "retrieval_check"} ({vt.department || "finance"})</span>
-                    <span className="text-emerald-400 font-semibold">Expected: {String(vt.expected_allowed ?? vt.expected)}</span>
+                  <div key={i} className="p-2.5 rounded-xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between">
+                    <span className="text-slate-700 font-semibold">Test: {vt.type || "retrieval_check"} ({vt.department || "finance"})</span>
+                    <span className="text-emerald-600 font-bold">Expected: {String(vt.expected_allowed ?? vt.expected)}</span>
                   </div>
                 ))}
               </div>
@@ -213,14 +210,14 @@ function RemediationContent() {
 
             {/* Post-execution result display */}
             {executionResult && (
-              <div className="p-4 bg-emerald-950/40 rounded-lg border border-emerald-800 text-xs space-y-2">
-                <div className="flex items-center space-x-2 text-emerald-300 font-bold text-sm">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+              <div className="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 text-xs space-y-2">
+                <div className="flex items-center space-x-2 text-emerald-800 font-bold text-sm">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                   <span>Execution & Validation Complete: {executionResult.status}</span>
                 </div>
-                <div className="text-slate-300">
+                <div className="text-slate-700 font-medium">
                   Validation Results:
-                  <pre className="font-mono text-emerald-400 mt-1 bg-black/40 p-2 rounded">
+                  <pre className="font-mono text-emerald-800 mt-1 bg-white p-2.5 rounded-xl border border-emerald-100">
                     {JSON.stringify(executionResult.test_results || [], null, 2)}
                   </pre>
                 </div>
@@ -229,9 +226,9 @@ function RemediationContent() {
 
             {/* Approval & Execution Actions */}
             {plan.status !== "Executed" && (
-              <div className="pt-4 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="flex items-center space-x-3 text-xs text-slate-400">
-                  <KeyRound className="w-4 h-4 text-amber-400" />
+              <div className="pt-4 border-t border-slate-200/70 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center space-x-3 text-xs text-slate-500 font-medium">
+                  <KeyRound className="w-4 h-4 text-amber-600" />
                   <span>Approving triggers HMAC token creation & atomic Agent Administration commit.</span>
                 </div>
 
@@ -239,7 +236,7 @@ function RemediationContent() {
                   <button
                     onClick={handleApprovePlan}
                     disabled={approving}
-                    className="inline-flex items-center space-x-2 px-6 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all shadow-lg shadow-emerald-600/30 disabled:opacity-50"
+                    className="clay-btn-success inline-flex items-center space-x-2 px-6 py-2.5 rounded-2xl text-white font-bold text-sm transition-transform shadow-md disabled:opacity-50"
                   >
                     <ShieldCheck className={`w-4 h-4 ${approving ? "animate-spin" : ""}`} />
                     <span>{approving ? "Issuing Token & Executing..." : "Approve & Execute Remediation"}</span>
@@ -250,9 +247,9 @@ function RemediationContent() {
           </div>
         </div>
       ) : (
-        <div className="bg-surface rounded-xl border border-surface-border p-12 text-center text-slate-400 text-sm space-y-3">
-          <Wrench className="w-10 h-10 text-slate-500 mx-auto opacity-70" />
-          <div className="font-bold text-slate-200">No active remediation plans proposed yet.</div>
+        <div className="clay-card p-12 text-center text-slate-500 text-sm space-y-3 font-medium">
+          <Wrench className="w-10 h-10 text-slate-400 mx-auto opacity-80" />
+          <div className="font-bold text-slate-800">No active remediation plans proposed yet.</div>
           <p className="max-w-md mx-auto text-xs text-slate-500">
             Remediation plans are generated from AEGIS incident reports or live fault injection (e.g. Finance agent reading HR documents).
           </p>
@@ -264,7 +261,7 @@ function RemediationContent() {
 
 export default function RemediationPage() {
   return (
-    <React.Suspense fallback={<div className="text-slate-400 py-12 text-center text-sm">Loading remediation manager...</div>}>
+    <React.Suspense fallback={<div className="text-slate-400 py-12 text-center text-sm font-medium">Loading remediation manager...</div>}>
       <RemediationContent />
     </React.Suspense>
   );

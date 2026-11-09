@@ -245,7 +245,7 @@ async def list_incidents(status: Optional[str] = None):
     if status:
         query += " AND status = ?"
         params.append(status)
-    query += " ORDER BY id DESC" if "id" in query else " ORDER BY timestamp DESC"
+    query += " ORDER BY timestamp DESC"
 
     async with get_db_connection() as conn:
         cursor = await conn.execute(query, tuple(params))

@@ -17,27 +17,50 @@ def run_smoke_test():
     print("AgentTower Playwright Smoke Test & Visual Documentation")
     print("=" * 60)
 
+    backend_port = os.getenv("AGENTTOWER_PORT", "8001")
+    frontend_port = os.getenv("FRONTEND_PORT", "3000")
+
     # 1. Reset & Seed DB to ensure full data is present
     print("[1/4] Ensuring clean seeded database state...")
     subprocess.run([sys.executable, "scripts/seed.py"], cwd=str(ROOT_DIR), check=True)
 
     # 2. Launch Backend process
-    print("[2/4] Starting FastAPI backend on http://127.0.0.1:8000...")
+    print(f"[2/4] Starting FastAPI backend on http://127.0.0.1:{backend_port}...")
     backend_proc = subprocess.Popen(
-        [sys.executable, "-m", "uvicorn", "backend.app.main:app", "--host", "127.0.0.1", "--port", "8000"],
+        [sys.executable, "-m", "uvicorn", "backend.app.main:app", "--host", "127.0.0.1", "--port", backend_port],
         cwd=str(ROOT_DIR)
     )
 
     # 3. Launch Frontend process
-    print("[3/4] Starting Next.js frontend on http://localhost:3000...")
+    print(f"[3/4] Starting Next.js frontend on http://localhost:{frontend_port}...")
+    env = os.environ.copy()
+    env["AGENTTOWER_PORT"] = backend_port
     frontend_proc = subprocess.Popen(
-        ["node", "node_modules/next/dist/bin/next", "start", "-p", "3000"],
-        cwd=str(FRONTEND_DIR)
+        ["node", "node_modules/next/dist/bin/next", "start", "-p", frontend_port],
+        cwd=str(FRONTEND_DIR),
+        env=env
     )
 
     try:
-        # Wait for servers to be up
-        time.sleep(4.0)
+        # Wait for servers to be up with health check polling
+        import urllib.request
+        for _ in range(20):
+            try:
+                with urllib.request.urlopen(f"http://127.0.0.1:{backend_port}/api/health", timeout=1) as res:
+                    if res.status == 200:
+                        break
+            except Exception:
+                time.sleep(0.5)
+
+        for _ in range(20):
+            try:
+                with urllib.request.urlopen(f"http://localhost:{frontend_port}/", timeout=1) as res:
+                    if res.status == 200:
+                        break
+            except Exception:
+                time.sleep(0.5)
+
+        time.sleep(1.0)
 
         pages_to_capture = [
             ("http://localhost:3000/", "01_overview.png", "Overview Dashboard"),
@@ -57,8 +80,8 @@ def run_smoke_test():
 
             for url, filename, title in pages_to_capture:
                 print(f"  - Navigating to {title} ({url})...")
-                page.goto(url, wait_until="networkidle", timeout=15000)
-                time.sleep(1.0)
+                page.goto(url, wait_until="domcontentloaded", timeout=15000)
+                time.sleep(1.5)
                 save_path = SCREENSHOTS_DIR / filename
                 page.screenshot(path=str(save_path), full_page=False)
                 print(f"    ✓ Screenshot saved: {save_path.name}")
