@@ -1,0 +1,21 @@
+decision_gate:
+  gated_tools:
+    - name: "restart_service"
+      description: "Restarts a production server or critical infrastructure service"
+      risk_level: "High"
+      requires_role: "DevOps Lead"
+      timeout_seconds: 60
+    - name: "update_benefits"
+      description: "Modifies employee salary, equity, or benefits allocation"
+      risk_level: "Critical"
+      requires_role: "People Ops Lead"
+      timeout_seconds: 60
+    - name: "export_report"
+      description: "Exports non-public audited financial data to an external sink"
+      risk_level: "High"
+      requires_role: "VP Finance"
+      timeout_seconds: 60
+
+  default_timeout_action: "reject"
+  max_spend_limit_per_run_usd: 1.50
+  max_tool_retries_per_run: 3

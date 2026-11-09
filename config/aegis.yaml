@@ -1,0 +1,40 @@
+# AEGIS Supervisor Configuration
+profile: "demo"
+
+rules:
+  heartbeat_and_silent_failure:
+    enabled: true
+    heartbeat_miss_multiplier_k: 2.5
+    flag_empty_output_on_success: true
+    flag_swallowed_tool_errors: true
+
+  execution_loop:
+    enabled: true
+    max_identical_tool_calls_n: 3
+    window_seconds_t: 120
+
+  token_and_cost_spike:
+    enabled: true
+    sigma_multiplier_k: 2.0
+    min_sample_size_for_sigma: 5
+    enforce_strict_budget_limit: true
+
+  unauthorised_retrieval:
+    enabled: true
+    severity: "Critical"
+    enforce_department_boundary: true
+
+  unauthorised_tool_use:
+    enabled: true
+    severity: "Critical"
+
+  prompt_injection_indicator:
+    enabled: true
+    severity: "Medium"
+    confidence_threshold: 0.60
+    patterns:
+      - "(?i)ignore\\s+all\\s+(previous|prior)\\s+instructions"
+      - "(?i)system\\s+override"
+      - "(?i)you\\s+are\\s+now\\s+(an?\\s+)?unrestricted"
+      - "(?i)disregard\\s+all\\s+safety\\s+protocols"
+      - "(?i)output\\s+confidential\\s+(api\\s+key|credentials|passwords)"

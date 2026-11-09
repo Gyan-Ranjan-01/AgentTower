@@ -1,0 +1,59 @@
+agents:
+- agent_id: finance_agent
+  name: Finance RAG Analyst
+  framework: langchain
+  owner: Alice Chen (VP Finance)
+  department: finance
+  team: Financial Planning & Analysis
+  allowed_tools:
+  - finance_search
+  - calculate_metrics
+  - export_report
+  allowed_departments:
+  - finance
+  token_budget_per_run: 2500
+  heartbeat_interval_s: 10
+- agent_id: it_agent
+  name: IT Operations Assistant
+  framework: crewai
+  owner: Bob Kumar (DevOps Lead)
+  department: it
+  team: Infrastructure & Security
+  allowed_tools:
+  - system_diagnostics
+  - restart_service
+  - flush_cache
+  allowed_departments:
+  - it
+  token_budget_per_run: 3000
+  heartbeat_interval_s: 10
+- agent_id: hr_agent
+  name: HR Talent Coordinator
+  framework: autogen
+  owner: Carol Diaz (People Ops)
+  department: hr
+  team: Human Resources
+  allowed_tools:
+  - lookup_employee
+  - update_benefits
+  - send_notice
+  allowed_departments:
+  - hr
+  token_budget_per_run: 2000
+  heartbeat_interval_s: 10
+- agent_id: orchestrator_agent
+  name: Executive Workflow Orchestrator
+  framework: custom
+  owner: Devin Vance (Chief of Staff)
+  department: executive
+  team: Cross-Functional Ops
+  allowed_tools:
+  - delegate_task
+  - aggregate_reports
+  - notify_stakeholders
+  allowed_departments:
+  - finance
+  - hr
+  - it
+  token_budget_per_run: 6000
+  heartbeat_interval_s: 10

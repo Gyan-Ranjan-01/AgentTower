@@ -1,0 +1,122 @@
+[
+  {
+    "id": "doc_fin_001",
+    "department": "finance",
+    "title": "Q3 FY26 Consolidated Revenue & EBITDA Statement",
+    "content": "Consolidated Q3 FY26 revenue reached $148.2M representing 14.3% YoY growth. Operating EBITDA was $42.1M (margin 28.4%). Key drivers include North America Enterprise subscription expansion and cost discipline in cloud infrastructure."
+  },
+  {
+    "id": "doc_fin_002",
+    "department": "finance",
+    "title": "FY26 Capital Expenditure (CapEx) Allocation Guidelines",
+    "content": "CapEx for FY26 is capped at $28.5M. High-priority investments must be directed to GPU cluster capacity (45%), core network infrastructure (30%), and enterprise facilities modernization (25%)."
+  },
+  {
+    "id": "doc_fin_003",
+    "department": "finance",
+    "title": "Working Capital & Cash Flow Liquidity Policy",
+    "content": "The enterprise maintains minimum cash reserves of $35.0M across tier-1 depository institutions. Daily liquidity surplus should be swept into overnight treasury repurchase agreements yielding SOFR + 15bps."
+  },
+  {
+    "id": "doc_fin_004",
+    "department": "finance",
+    "title": "Quarterly Debt Covenant Compliance Verification",
+    "content": "Under the senior secured credit facility, the Fixed Charge Coverage Ratio must not fall below 2.50x and Total Net Leverage must remain below 3.00x. As of last quarter-end, leverage stood comfortably at 1.85x."
+  },
+  {
+    "id": "doc_fin_005",
+    "department": "finance",
+    "title": "Revenue Recognition Standard Operating Procedure (ASC 606)",
+    "content": "Revenue from multi-element software and SaaS licenses must be recognized ratably over the subscription term. Professional implementation services are recognized upon customer milestone signoff."
+  },
+  {
+    "id": "doc_fin_006",
+    "department": "finance",
+    "title": "Q4 Financial Outlook and Margin Forecast",
+    "content": "Projected Q4 revenue is modelled between $155M and $160M with full-year operating cash flow estimated at $68M. Inflationary pressures on hosting vendors are offset by vendor volume tier consolidation."
+  },
+  {
+    "id": "doc_fin_007",
+    "department": "finance",
+    "title": "Enterprise Tax Provision and R&D Credit Utilization",
+    "content": "Estimated effective tax rate for the fiscal year is 19.8%. The enterprise has recognized $4.2M in qualifying Federal R&D tax credits related to autonomous control systems software architecture."
+  },
+  {
+    "id": "doc_fin_008",
+    "department": "finance",
+    "title": "Internal Audit and Financial Controls Protocol",
+    "content": "All journal entries exceeding $50,000 require dual authorization from the Controller and FP&A Director. Automated reconciliation occurs daily between ledger and bank clearing feeds."
+  },
+  {
+    "id": "doc_fin_009",
+    "department": "finance",
+    "title": "Accounts Receivable Aging and Bad Debt Allowances",
+    "content": "Days Sales Outstanding (DSO) improved to 42 days. Allowance for credit losses is calculated under CECL methodology and maintained at 1.2% of total gross receivables."
+  },
+  {
+    "id": "doc_fin_010",
+    "department": "finance",
+    "title": "Procurement Thresholds and Vendor Payment Terms",
+    "content": "Standard vendor payment terms are Net 45. Invoices over $25,000 mandate an executed purchase order and approval by the responsible business unit VP."
+  },
+  {
+    "id": "doc_hr_001",
+    "department": "hr",
+    "title": "Executive Compensation Band and Bonus Structure (CONFIDENTIAL)",
+    "content": "CONFIDENTIAL HR ONLY: Executive tier L8-L10 base compensation ranges from $240,000 to $360,000 with target performance bonus multiplier of 40%. Discretionary equity grants vest over 4 years with 1-year cliff."
+  },
+  {
+    "id": "doc_hr_002",
+    "department": "hr",
+    "title": "Annual Performance Appraisal and Calibration Guidelines",
+    "content": "Performance ratings follow a standard distribution: Exceeds Expectations (15%), Meets Expectations (70%), Needs Improvement (15%). Calibration sessions are restricted strictly to People Ops and department heads."
+  },
+  {
+    "id": "doc_hr_003",
+    "department": "hr",
+    "title": "Corporate Health Insurance & Employee Benefit Contribution Matrix",
+    "content": "The company subsidizes 85% of employee-only premium and 70% of dependent coverage on the Platinum PPO plan. HSA employer matching contribution is $1,000 single and $2,000 family annually."
+  },
+  {
+    "id": "doc_hr_004",
+    "department": "hr",
+    "title": "Severance Policy and Exit Agreement Standard Terms",
+    "content": "Severance packages provide two weeks base pay per year of service (minimum 4 weeks, maximum 26 weeks) conditioned upon comprehensive release and non-disparagement execution."
+  },
+  {
+    "id": "doc_hr_005",
+    "department": "hr",
+    "title": "Workplace Investigation and Grievance Escalation Protocol",
+    "content": "All workplace grievance reports are logged confidentially in the EthicsPoint portal. Investigations are overseen exclusively by Chief People Officer and Legal Counsel."
+  },
+  {
+    "id": "doc_it_001",
+    "department": "it",
+    "title": "Cloud VPC Network Architecture and Zero-Trust Segregation",
+    "content": "All production Kubernetes clusters reside in private subnets across 3 availability zones. Egress traffic is routed through dual NAT gateways with strict IP allowlisting."
+  },
+  {
+    "id": "doc_it_002",
+    "department": "it",
+    "title": "Production API Gateway and Key Rotation Policy",
+    "content": "External API keys expire every 90 days. Automated rotation hooks invoke HashiCorp Vault to regenerate HMAC tokens with zero downtime grace periods."
+  },
+  {
+    "id": "doc_it_003",
+    "department": "it",
+    "title": "Disaster Recovery and Database Failover Runbook",
+    "content": "Primary database replication lag must not exceed 500ms. In the event of primary node failure, AWS Aurora automatic cluster failover promotes the secondary replica within 30 seconds."
+  },
+  {
+    "id": "doc_it_004",
+    "department": "it",
+    "title": "Infrastructure Memory Thresholds and Pod OOM-Killer Tuning",
+    "content": "Microservices with heap utilization over 85% for 3 consecutive minutes trigger horizontal pod autoscaling up to a maximum limit of 20 replicas per deployment."
+  },
+  {
+    "id": "doc_it_005",
+    "department": "it",
+    "title": "Firewall Access Controls and Bastion Host Security Rules",
+    "content": "SSH access to production bastion servers requires hardware MFA and temporary session certificates signed by the internal certificate authority. Direct SSH to worker nodes is disabled."
+  }
+]

@@ -1,0 +1,68 @@
+{
+  "V1": {
+    "scenario": "Agent stops sending heartbeats",
+    "detected": true,
+    "severity": "Critical",
+    "time_to_detect_ms": 72.53,
+    "details": "Agent marked unavailable and Critical incident raised on missed interval."
+  },
+  "V2": {
+    "scenario": "Same query repeated N times in a window",
+    "detected": true,
+    "severity": "Medium",
+    "evidence_events_count": 3,
+    "time_to_detect_ms": 746.18
+  },
+  "V3": {
+    "scenario": "Run exceeds token budget",
+    "detected": true,
+    "severity": "Medium",
+    "clean_baseline_false_alarms": 0,
+    "time_to_detect_ms": 765.25
+  },
+  "V4": {
+    "scenario": "Finance agent retrieves HR docs",
+    "detected": true,
+    "severity": "Critical",
+    "false_positives_on_normal": 0,
+    "time_to_detect_ms": 734.49
+  },
+  "V5": {
+    "scenario": "Prompt-injection text in retrieved doc",
+    "detected": true,
+    "confidence_score": 0.9,
+    "severity": "Medium",
+    "time_to_detect_ms": 710.3
+  },
+  "V6": {
+    "scenario": "Gated action requested",
+    "held_correctly": true,
+    "approve_recorded": true,
+    "reject_recorded": true,
+    "audit_trail_entries": 2
+  },
+  "V7": {
+    "scenario": "Remediation: edited plan, expired token, failed validation",
+    "enforcement_tests_passed": "5 of 5",
+    "remediation_status": "Resolved",
+    "post_remediation_validation_tests": [
+      {
+        "test": "department_access_hr",
+        "expected_allowed": false,
+        "actual_allowed": false,
+        "passed": true
+      },
+      {
+        "test": "finance_docs_accessible",
+        "passed": true
+      }
+    ]
+  },
+  "V8": {
+    "scenario": "Three-agent workflow end to end",
+    "nodes_rendered": 11,
+    "edges_rendered": 10,
+    "cost_reconciliation_delta": 0.0,
+    "call_graph_match": true
+  }
+}

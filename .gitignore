@@ -1,0 +1,31 @@
+# Environments & OS
+.env
+__pycache__/
+*.py[cod]
+*$py.class
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+build/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Evaluation artifacts (keep scripts & committed sample results)
+# Keep results/

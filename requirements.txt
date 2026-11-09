@@ -1,0 +1,11 @@
+fastapi==0.115.6
+uvicorn==0.34.0
+pydantic==2.10.4
+pydantic-settings==2.15.0
+aiosqlite==0.20.0
+httpx==0.28.1
+pytest==9.1.1
+PyYAML==6.0.3
+scikit-learn==1.7.2
+langchain==1.4.9
+langchain-core==1.7.6
