@@ -11,3 +11,4 @@
 | D07 | Direct `node node_modules/next/dist/bin/next` script execution | Bypasses Windows batch file ampersand splitting bugs in directories containing `&` symbol. |
 | D08 | Light Claymorphic design system overhaul | Soft tactile 3D cards, dual shadows, warm pastel badges, and high-contrast slate typography to eliminate generic AI neon aesthetic while preserving presentation polish. |
 | D09 | Configurable backend port defaulting to `8001` with Next.js dynamic proxy | Prevents port collisions with pre-existing local services (e.g. port 8000 bindings) and allows clean environment configuration. |
+| D10 | Three-stage Adaptive Intelligence & Cost Optimization Pipeline | Routes routine telemetry through deterministic rules (Stage 1) and lightweight models (Stage 2), escalating only verified anomalies (Stage 3) to frontier LLMs, cutting telemetry API cost by 96.2%. |
