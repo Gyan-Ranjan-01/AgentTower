@@ -54,13 +54,8 @@ def cmd_evaluate():
 def cmd_reset():
     print("=== Resetting AgentTower Demo State (<10s) ===")
     start_t = time.time()
-    run_cmd([sys.executable, "-c", "
-import asyncio
-from backend.app.db import reset_db
-asyncio.run(reset_db())
-print('Database tables dropped and re-initialized.')
-"])
-    run_cmd([sys.executable, "scripts/seed.py"])
+    from scripts.seed import run_seed
+    run_seed()
     elapsed = round(time.time() - start_t, 2)
     print(f"=== Reset Complete in {elapsed}s (Target: <10s) ===")
 
@@ -83,9 +78,8 @@ def cmd_start():
     frontend_proc = None
     if FRONTEND_DIR.exists() and (FRONTEND_DIR / "package.json").exists():
         frontend_proc = subprocess.Popen(
-            ["npm", "run", "dev"],
-            cwd=str(FRONTEND_DIR),
-            shell=True
+            ["node", "node_modules/next/dist/bin/next", "dev", "-p", "3000"],
+            cwd=str(FRONTEND_DIR)
         )
 
     print("\n" + "=" * 60)

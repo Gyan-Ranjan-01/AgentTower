@@ -50,7 +50,7 @@ def run_seed():
     for idx, q in enumerate(finance_queries, start=1):
         finance_agent.run(query=q)
         print(f"  - Finance run {idx:02d}/12 completed: '{q[:40]}...'")
-        time.sleep(0.02)
+        time.sleep(0.005)
 
     # 3. IT Support Clean Runs (10 runs)
     it_nodes = [
@@ -62,7 +62,7 @@ def run_seed():
     for idx, node in enumerate(it_nodes, start=1):
         it_agent.run(command="diagnose", service_name=node)
         print(f"  - IT run {idx:02d}/10 completed: diagnostics on {node}")
-        time.sleep(0.02)
+        time.sleep(0.005)
 
     # 4. HR Automation Clean Runs (8 runs)
     emp_ids = [
@@ -73,7 +73,7 @@ def run_seed():
     for idx, emp in enumerate(emp_ids, start=1):
         hr_agent.run(employee_id=emp, action="lookup")
         print(f"  - HR run {idx:02d}/08 completed: lookup for {emp}")
-        time.sleep(0.02)
+        time.sleep(0.005)
 
     # 5. Multi-agent Orchestrator workflow runs (2 runs)
     print("\n[*] Executing 2 end-to-end multi-agent Orchestrator workflow traces...")
@@ -82,7 +82,6 @@ def run_seed():
 
     # Flush all remaining events
     sdk_client.flush()
-    time.sleep(0.5)
 
     print("\n" + "=" * 60)
     print("Seeding Complete: 32 Clean Agent Runs Executed Successfully.")

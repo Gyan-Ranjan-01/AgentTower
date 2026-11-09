@@ -8,3 +8,4 @@
 | D04 | HMAC-SHA256 tokens for Remediation Manager with nonce & plan hash binding | Prevents replay, tampering, parameter alteration, and bypass of human-approved remediation steps. |
 | D05 | Local BM25/TF-IDF synthetic corpus retriever for Finance RAG agent | Eliminates external embedding API dependency and network latency for offline repeatability (`LLM_MODE=scripted`). |
 | D06 | Next.js 14 App Router with React Flow for Lineage DAG and Tailwind CSS | Delivers 1080p presentation-ready dark operations console matching L&T review deck specifications. |
+| D07 | Direct `node node_modules/next/dist/bin/next` script execution | Bypasses Windows batch file ampersand splitting bugs in directories containing `&` symbol. |

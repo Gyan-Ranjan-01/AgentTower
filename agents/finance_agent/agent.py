@@ -88,7 +88,6 @@ class FinanceRAGAgent:
                 run_id=tool_run_uuid,
                 parent_run_id=run_uuid
             )
-            time.sleep(0.02)
             metric_res = "Calculated metrics: EBITDA $42.1M (28.4% margin), Fixed Charge Coverage 2.85x"
             self.handler.on_tool_end(
                 metric_res,
