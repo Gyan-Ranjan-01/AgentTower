@@ -60,6 +60,16 @@ def cmd_reset():
     print(f"=== Reset Complete in {elapsed}s (Target: <10s) ===")
 
 
+def cmd_clean():
+    print("=== Cleaning Cache & Build Artifacts ===")
+    import shutil
+    next_dir = FRONTEND_DIR / ".next"
+    if next_dir.exists():
+        shutil.rmtree(next_dir, ignore_errors=True)
+        print("  ✓ Cleared frontend/.next cache")
+    print("=== Clean Complete ===")
+
+
 def cmd_start():
     print("=== Starting AgentTower Prototype (Backend + Frontend) ===")
     # 1. Check if DB exists; if not, initialize and seed
@@ -68,7 +78,14 @@ def cmd_start():
         print("Database not found. Seeding initial baseline...")
         cmd_seed()
 
-    # 2. Launch Backend via uvicorn
+    # 2. Check for stale production build artifacts that cause 404s in dev mode
+    next_build_id = FRONTEND_DIR / ".next" / "BUILD_ID"
+    if next_build_id.exists():
+        import shutil
+        print("Detected previous production build artifacts. Clearing frontend/.next for dev mode...")
+        shutil.rmtree(FRONTEND_DIR / ".next", ignore_errors=True)
+
+    # 3. Launch Backend via uvicorn
     backend_port = os.getenv("AGENTTOWER_PORT", "8001")
     frontend_port = os.getenv("FRONTEND_PORT", "3000")
     backend_proc = subprocess.Popen(
@@ -76,7 +93,7 @@ def cmd_start():
         cwd=str(ROOT_DIR)
     )
 
-    # 3. Launch Frontend if present
+    # 4. Launch Frontend if present
     frontend_proc = None
     if FRONTEND_DIR.exists() and (FRONTEND_DIR / "package.json").exists():
         frontend_proc = subprocess.Popen(
@@ -116,11 +133,14 @@ def main():
     parser.add_argument("--test", action="store_true", help="Run automated test suite")
     parser.add_argument("--evaluate", action="store_true", help="Run V1..V8 evaluation harness")
     parser.add_argument("--reset", action="store_true", help="Fast reset to clean demo state (<10s)")
+    parser.add_argument("--clean", action="store_true", help="Clear frontend .next cache and temporary build artifacts")
     parser.add_argument("--start", action="store_true", help="Start backend and frontend services")
     args = parser.parse_args()
 
     if args.install:
         cmd_install()
+    elif args.clean:
+        cmd_clean()
     elif args.seed:
         cmd_seed()
     elif args.test:
